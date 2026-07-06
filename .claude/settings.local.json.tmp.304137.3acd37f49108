@@ -13,7 +13,8 @@
       "Bash(git add *)",
       "Bash(git commit -q -m 'Navbar: manter apenas o menu Início *)",
       "Bash(git commit -q -m 'Integrar Chatwoot: preencher baseUrl e websiteToken reais *)",
-      "Bash(git commit -q -m 'Botão abre chat em nova aba \\(chat.html\\) e remove bolha do canto *)"
+      "Bash(git commit -q -m 'Botão abre chat em nova aba \\(chat.html\\) e remove bolha do canto *)",
+      "Bash(git commit -q -m 'Chat em tela cheia na aba nova \\(widget Chatwoot fullscreen via CSS\\) *)"
     ]
   }
 }

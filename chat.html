@@ -6,17 +6,25 @@
   <title>Atendimento PRO — Chat</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
     body {
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
       background: radial-gradient(circle at 50% 32%, #12222f 0%, #0a1119 40%, #000 85%);
       color: #eaf4ff;
-      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Tela de "carregando" enquanto o widget não abre */
+    .loading {
+      position: fixed;
+      inset: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 24px;
+      z-index: 1;
     }
     .spinner {
       width: 46px; height: 46px;
@@ -28,20 +36,40 @@
       filter: drop-shadow(0 0 10px rgba(23,169,255,0.5));
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.02em; }
-    p { color: #9fb4c6; margin-top: 8px; font-size: 0.95rem; }
+    .loading h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.02em; }
+    .loading p { color: #9fb4c6; margin-top: 8px; font-size: 0.95rem; }
+
+    /* ===== Força o widget do Chatwoot a ocupar a TELA INTEIRA ===== */
+    .woot-widget-holder {
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-height: 100% !important;
+      max-width: 100% !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      z-index: 10 !important;
+    }
+    /* Esconde a bolha/launcher — abrimos automaticamente */
+    .woot-widget-bubble,
+    .woot--close,
+    .woot--bubble-holder { display: none !important; }
   </style>
 </head>
 <body>
-  <div class="spinner"></div>
-  <h1>Abrindo seu atendimento…</h1>
-  <p>Aguarde um instante, já vamos te conectar. 💬</p>
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <h1>Abrindo seu atendimento…</h1>
+    <p>Aguarde um instante, já vamos te conectar. 💬</p>
+  </div>
 
   <script>
     var CHATWOOT_BASE_URL = "https://atendimentopro-chatwoot.9fd2lk.easypanel.host";
     var CHATWOOT_TOKEN = "9QNgXgtUh2oV2n5y9KaVsj1V";
 
-    // Esconde o botão-bolha padrão; abrimos o chat automaticamente
     window.chatwootSettings = { hideMessageBubble: true, position: "right", type: "standard" };
 
     (function (d, t) {
@@ -58,9 +86,11 @@
       };
     })(document, "script");
 
-    // Assim que o widget estiver pronto, abre o chat automaticamente
+    // Abre o chat automaticamente e some com a tela de carregando
     window.addEventListener("chatwoot:ready", function () {
       window.$chatwoot.toggle("open");
+      var el = document.getElementById("loading");
+      if (el) setTimeout(function () { el.style.display = "none"; }, 400);
     });
   </script>
 </body>
