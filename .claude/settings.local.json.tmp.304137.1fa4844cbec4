@@ -18,7 +18,8 @@
       "Bash(git commit -q -m 'Chat centralizado na pagina da marca \\(em vez de esticado\\) *)",
       "Bash(git commit -q -m 'Chat em altura cheia \\(fullscreen vertical\\), centralizado *)",
       "Bash(git commit -q -m 'Botao abre o chat na mesma aba \\(sem abrir nova aba\\) *)",
-      "Bash(git commit -q -m 'Chat centralizado vertical e horizontalmente \\(card no meio da tela\\) *)"
+      "Bash(git commit -q -m 'Chat centralizado vertical e horizontalmente \\(card no meio da tela\\) *)",
+      "Bash(git commit -q -m 'Forcar idioma do widget para pt_BR *)"
     ]
   }
 }
