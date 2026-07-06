@@ -213,41 +213,14 @@
   </footer>
 
   <!-- ============================================================= -->
-  <!-- INTEGRAÇÃO CHATWOOT                                            -->
-  <!-- Substitua os dois valores abaixo pelos da sua conta Chatwoot: -->
-  <!--   CHATWOOT_BASE_URL  → ex: https://app.chatwoot.com           -->
-  <!--   CHATWOOT_TOKEN     → seu Website Token da inbox             -->
+  <!-- O botão abre a página do chat (chat.html) em uma NOVA ABA.     -->
+  <!-- A página inicial NÃO carrega o widget, por isso não aparece    -->
+  <!-- a bolha no canto.                                              -->
   <!-- ============================================================= -->
   <script>
-    var CHATWOOT_BASE_URL = "https://atendimentopro-chatwoot.9fd2lk.easypanel.host";
-    var CHATWOOT_TOKEN = "9QNgXgtUh2oV2n5y9KaVsj1V";
-
-    (function (d, t) {
-      var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      g.src = CHATWOOT_BASE_URL + "/packs/js/sdk.js";
-      g.defer = true;
-      g.async = true;
-      s.parentNode.insertBefore(g, s);
-      g.onload = function () {
-        window.chatwootSDK.run({
-          websiteToken: CHATWOOT_TOKEN,
-          baseUrl: CHATWOOT_BASE_URL,
-        });
-      };
-    })(document, "script");
-
-    // Abre o chat na hora (botão central + link "Atendimento" da navbar)
-    function abrirChat(e) {
-      if (e) e.preventDefault();
-      if (window.$chatwoot) {
-        window.$chatwoot.toggle("open");
-      } else {
-        window.addEventListener("chatwoot:ready", function () {
-          window.$chatwoot.toggle("open");
-        });
-      }
-    }
-    document.getElementById("btn-atendente").addEventListener("click", abrirChat);
+    document.getElementById("btn-atendente").addEventListener("click", function () {
+      window.open("chat.html", "_blank");
+    });
   </script>
 </body>
 </html>

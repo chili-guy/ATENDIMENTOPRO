@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atendimento PRO — Chat</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 50% 32%, #12222f 0%, #0a1119 40%, #000 85%);
+      color: #eaf4ff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .spinner {
+      width: 46px; height: 46px;
+      border: 4px solid rgba(79,195,255,0.25);
+      border-top-color: #4fc3ff;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin-bottom: 22px;
+      filter: drop-shadow(0 0 10px rgba(23,169,255,0.5));
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.02em; }
+    p { color: #9fb4c6; margin-top: 8px; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <h1>Abrindo seu atendimento…</h1>
+  <p>Aguarde um instante, já vamos te conectar. 💬</p>
+
+  <script>
+    var CHATWOOT_BASE_URL = "https://atendimentopro-chatwoot.9fd2lk.easypanel.host";
+    var CHATWOOT_TOKEN = "9QNgXgtUh2oV2n5y9KaVsj1V";
+
+    // Esconde o botão-bolha padrão; abrimos o chat automaticamente
+    window.chatwootSettings = { hideMessageBubble: true, position: "right", type: "standard" };
+
+    (function (d, t) {
+      var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      g.src = CHATWOOT_BASE_URL + "/packs/js/sdk.js";
+      g.defer = true;
+      g.async = true;
+      s.parentNode.insertBefore(g, s);
+      g.onload = function () {
+        window.chatwootSDK.run({
+          websiteToken: CHATWOOT_TOKEN,
+          baseUrl: CHATWOOT_BASE_URL,
+        });
+      };
+    })(document, "script");
+
+    // Assim que o widget estiver pronto, abre o chat automaticamente
+    window.addEventListener("chatwoot:ready", function () {
+      window.$chatwoot.toggle("open");
+    });
+  </script>
+</body>
+</html>
