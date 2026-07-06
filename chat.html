@@ -39,24 +39,35 @@
     .loading h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.02em; }
     .loading p { color: #9fb4c6; margin-top: 8px; font-size: 0.95rem; }
 
-    /* ===== Força o widget do Chatwoot a ocupar a TELA INTEIRA ===== */
+    /* ===== Centraliza o chat no meio da página da marca ===== */
     .woot-widget-holder {
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      width: 100% !important;
-      height: 100% !important;
-      max-height: 100% !important;
-      max-width: 100% !important;
-      border-radius: 0 !important;
-      box-shadow: none !important;
+      top: 50% !important;
+      left: 50% !important;
+      right: auto !important;
+      bottom: auto !important;
+      transform: translate(-50%, -50%) !important;
+      width: 440px !important;
+      max-width: 94vw !important;
+      height: 88vh !important;
+      max-height: 760px !important;
+      border-radius: 18px !important;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 40px rgba(23,169,255,0.25) !important;
       z-index: 10 !important;
     }
     /* Esconde a bolha/launcher — abrimos automaticamente */
     .woot-widget-bubble,
     .woot--close,
     .woot--bubble-holder { display: none !important; }
+
+    /* Em telas pequenas, ocupa quase tudo */
+    @media (max-width: 520px) {
+      .woot-widget-holder {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        border-radius: 0 !important;
+      }
+    }
   </style>
 </head>
 <body>
