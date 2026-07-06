@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xdg-open \"http://localhost:8000/\")",
+      "Bash(git --version)",
+      "Bash(gh auth *)",
+      "Bash(git config *)",
+      "Bash(timeout 10 ssh -T git@github.com)",
+      "Bash(git commit -q -m 'Site Atendimento PRO com botão de chat Chatwoot *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'Navbar: manter apenas o menu Início *)"
+    ]
+  }
+}
