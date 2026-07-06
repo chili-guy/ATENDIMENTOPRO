@@ -39,19 +39,19 @@
     .loading h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.02em; }
     .loading p { color: #9fb4c6; margin-top: 8px; font-size: 0.95rem; }
 
-    /* ===== Centraliza o chat no meio da página da marca ===== */
+    /* ===== Chat em altura cheia (fullscreen possível) ===== */
     .woot-widget-holder {
-      top: 50% !important;
+      top: 0 !important;
+      bottom: 0 !important;
       left: 50% !important;
       right: auto !important;
-      bottom: auto !important;
-      transform: translate(-50%, -50%) !important;
-      width: 440px !important;
-      max-width: 94vw !important;
-      height: 88vh !important;
-      max-height: 760px !important;
-      border-radius: 18px !important;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 40px rgba(23,169,255,0.25) !important;
+      transform: translateX(-50%) !important;
+      width: 480px !important;
+      max-width: 100vw !important;
+      height: 100vh !important;
+      max-height: 100vh !important;
+      border-radius: 0 !important;
+      box-shadow: 0 0 60px rgba(23,169,255,0.22) !important;
       z-index: 10 !important;
     }
     /* Esconde a bolha/launcher — abrimos automaticamente */
@@ -59,13 +59,11 @@
     .woot--close,
     .woot--bubble-holder { display: none !important; }
 
-    /* Em telas pequenas, ocupa quase tudo */
+    /* Em telas pequenas, ocupa a tela toda */
     @media (max-width: 520px) {
       .woot-widget-holder {
         width: 100% !important;
-        height: 100% !important;
-        max-height: 100% !important;
-        border-radius: 0 !important;
+        max-width: 100% !important;
       }
     }
   </style>
