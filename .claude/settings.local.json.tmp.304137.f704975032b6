@@ -11,7 +11,8 @@
       "Bash(git remote *)",
       "Bash(git push *)",
       "Bash(git add *)",
-      "Bash(git commit -q -m 'Navbar: manter apenas o menu Início *)"
+      "Bash(git commit -q -m 'Navbar: manter apenas o menu Início *)",
+      "Bash(git commit -q -m 'Integrar Chatwoot: preencher baseUrl e websiteToken reais *)"
     ]
   }
 }
